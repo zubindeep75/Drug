@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCLEX Pharm Table (clean)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            background: #eef2f5;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .table-wrapper {
+            width: 100%;
+            max-width: 1600px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0,40,60,0.2);
+            overflow: hidden;
+        }
+        .scrollable {
+            max-height: 90vh;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1300px;
+            font-size: 0.88rem;
+            background: #ffffff;
+        }
+        th {
+            background: #b6d0e4;   /* soft blue-gray */
+            color: #1e3b4f;
+            font-weight: 600;
+            padding: 12px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            border-right: 1px solid #c6dae9;
+            text-align: left;
+        }
+        th:last-child {
+            border-right: none;
+        }
+        td {
+            padding: 11px 10px;
+            border-bottom: 1px solid #dae6f0;
+            vertical-align: top;
+            background-color: #fcfdff;
+        }
+        tbody tr:nth-child(even) td {
+            background-color: #f5f9fe;
+        }
+        tbody tr:hover td {
+            background-color: #e1effa;
+        }
+        .system-header {
+            background: #9bb7d4 !important;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0a2a3b;
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid #2d5a7a;
+        }
+        .system-header td {
+            background: #9bb7d4 !important;
+            padding: 8px 15px;
+        }
+        .high-yield {
+            background-color: #fef7e7 !important;
+            border-left: 5px solid #e7a33e;
+        }
+        .high-yield td:first-child {
+            font-weight: 700;
+            color: #9d5200;
+        }
+        .drug-name {
+            font-weight: 600;
+            color: #124263;
+        }
+        ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+        li {
+            margin-bottom: 3px;
+            line-height: 1.4;
+        }
+        .badge {
+            background: #d44c2f;
+            color: white;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 30px;
+            margin-left: 8px;
+            display: inline-block;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<div class="table">
+    <div class="">
+        <table>
+            <thead>
+                <tr>
+                    <th>Drugs (loved by uworld)<button id="toggleSearch" onclick="toggleSearch()">🔍</button>
+<input type="text" id="search" placeholder="Find text" style="display:none; width:120px;">
+<button id="findBtn" onclick="findText()" style="display:none;">Find/Next</button>
+
+<script>
+let timer;
+
+function toggleSearch(){
+    document.getElementById("search").style.display="inline";
+    document.getElementById("findBtn").style.display="inline";
+    resetTimer();
+}
+
+function findText(){
+    let text = document.getElementById("search").value;
+    if (!text) return;
+    window.find(text);
+    resetTimer();
+}
+
+function resetTimer(){
+    clearTimeout(timer);
+    timer=setTimeout(()=>{
+        document.getElementById("search").style.display="none";
+        document.getElementById("findBtn").style.display="none";
+        document.getElementById("search").value="";
+    },20000);
+}
+</script></th>
+                    <th>Function</th>
+                    <th>Major Side Effects</th>
+                    <th>Contraindications / Labs</th>
+                    <th>Patient Teaching</th>
+                    <th><style>
+#fsBtn {
+  padding: 6px 12px;       /* small padding */
+  font-size: 12px;         /* smaller text */
+  border: none;
+  border-radius: 4px;
+  background: #59be5e;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: fixed;         /* stays in corner */
+  top: 10px;
+  right: 15px;
+  z-index: 1000;           /* above everything */
+}
+
+#fsBtn:hover {
+  background: #89ff9d;
+  transform: scale(1.1);
+}
+
+#fsBtn:active {
+  transform: scale(0.95);
+}
+</style>
+</head>
+
+<body>
+
+<button id="fsBtn" onclick="toggleFullscreen()">Expand</button>
+
+<script>
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+function updateButton() {
+  const btn = document.getElementById("fsBtn");
+  btn.innerText = document.fullscreenElement ? "Exit" : "Expand";
+}
+
+// Update button when fullscreen changes (e.g., user presses ESC)
+document.addEventListener("fullscreenchange", updateButton);
+</script>Interactions / Antidote</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ********** HEMATOLOGICAL / ONCOLOGICAL ********** -->
+                <tr class="system-header"><td colspan="6">🔬 HEMATOLOGICAL / ONCOLOGICAL</td></tr>
+                <tr class="high-yield">
+                    <td>Warfarin (Coumadin) 🏆</td>
+                    <td>Used to prevent blood clots in atrial fibrillation, mechanical heart valves, DVT/PE.</td>
+                    <td><ul><li>Bleeding (GI, intracranial)</li><li>Skin necrosis</li></ul></td>
+                    <td>Monitor INR (2‑3, up to 3.5 for valves); contraindicated in pregnancy.</td>
+                    <td>Keep vitamin K intake consistent; use soft toothbrush; report bleeding.</td>
+                    <td>Antidote: Vitamin K, FFP. Avoid NSAIDs, many antibiotics.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Heparin 🏆</td>
+                    <td>Used for acute anticoagulation in DVT/PE, MI, and during procedures.</td>
+                    <td><ul><li>Bleeding</li><li>HIT (thrombocytopenia)</li></ul></td>
+                    <td>Monitor aPTT (1.5‑2.5× control), platelets; avoid with active bleeding.</td>
+                    <td>Report bruising, dark stools, unusual bleeding.</td>
+                    <td>Antidote: Protamine sulfate. Avoid with antiplatelets.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Enoxaparin (Lovenox) 🏆</td>
+                    <td>Used to prevent and treat DVT/PE, especially after surgery.</td>
+                    <td><ul><li>Bleeding</li><li>Epidural hematoma risk with spinal anesthesia</li></ul></td>
+                    <td>Monitor platelets; anti‑Xa rarely; avoid with active bleeding.</td>
+                    <td>Subcutaneous; do not rub site; report unusual bruising.</td>
+                    <td>Antidote: Protamine (partial). Avoid NSAIDs.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Clopidogrel (Plavix) 🏆</td>
+                    <td>Used to prevent stent thrombosis, stroke, and heart attack.</td>
+                    <td><ul><li>Bleeding</li><li>TTP (rare)</li></ul></td>
+                    <td>Hold 5‑7d before surgery; monitor for bruising.</td>
+                    <td>Report unusual bleeding, black tarry stools.</td>
+                    <td>Avoid omeprazole (↓ efficacy); avoid NSAIDs.</td>
+                </tr>
+                <tr>
+                    <td>Rivaroxaban (Xarelto)</td>
+                    <td>Used to prevent clots in atrial fibrillation and treat DVT/PE.</td>
+                    <td><ul><li>Bleeding</li></ul></td>
+                    <td>CrCl <15 avoid; no routine lab monitoring.</td>
+                    <td>Take with evening meal (food increases absorption).</td>
+                    <td>Antidote: Andexanet alfa. Avoid NSAIDs.</td>
+                </tr>
+                <tr>
+                    <td>Apixaban (Eliquis)</td>
+                    <td>Used to prevent stroke in AF and treat DVT/PE.</td>
+                    <td><ul><li>Bleeding</li></ul></td>
+                    <td>CrCl <25 avoid; no routine monitoring.</td>
+                    <td>Take as prescribed; missed dose can be taken up to 6h before next.</td>
+                    <td>Antidote: Andexanet alfa. Strong CYP3A4 inhibitors increase levels.</td>
+                </tr>
+                <tr>
+                    <td>Dabigatran (Pradaxa)</td>
+                    <td>Used to prevent stroke in AF and treat DVT/PE.</td>
+                    <td><ul><li>Bleeding</li><li>Indigestion</li></ul></td>
+                    <td>CrCl <30 avoid; capsules must not be opened.</td>
+                    <td>Swallow whole; report indigestion, bleeding.</td>
+                    <td>Antidote: Idarucizumab (Praxbind). P‑gp inhibitors increase levels.</td>
+                </tr>
+                <tr>
+                    <td>Fondaparinux (Arixtra)</td>
+                    <td>Used to prevent DVT after orthopedic surgery.</td>
+                    <td><ul><li>Bleeding</li></ul></td>
+                    <td>CrCl <30 avoid; monitor platelets.</td>
+                    <td>Subcutaneous; do not mix with other injections.</td>
+                    <td>No specific antidote; avoid with neuraxial anesthesia.</td>
+                </tr>
+                <tr>
+                    <td>Filgrastim (Neupogen)</td>
+                    <td>Used to boost neutrophil count after chemotherapy or in neutropenia.</td>
+                    <td><ul><li>Bone pain</li><li>Splenic rupture (rare)</li></ul></td>
+                    <td>Monitor CBC with differential; avoid in sickle cell disease.</td>
+                    <td>Report severe left upper quadrant pain, fever.</td>
+                    <td>No major interactions.</td>
+                </tr>
+                <tr>
+                    <td>Epoetin alfa (Procrit)</td>
+                    <td>Used to treat anemia in chronic kidney disease or from chemotherapy.</td>
+                    <td><ul><li>High blood pressure</li><li>Blood clots</li></ul></td>
+                    <td>Monitor Hgb (target ≤11 g/dL), BP, iron stores; avoid with uncontrolled HTN.</td>
+                    <td>Report signs of clots (leg pain, chest pain); take iron as directed.</td>
+                    <td>No specific antidote.</td>
+                </tr>
+                <tr>
+                    <td>Methotrexate</td>
+                    <td>Used for rheumatoid arthritis, psoriasis, and certain cancers.</td>
+                    <td><ul><li>Bone marrow suppression</li><li>Liver damage</li><li>Lung fibrosis</li></ul></td>
+                    <td>Monitor LFTs, Cr, CBC; contraindicated in pregnancy, alcoholism.</td>
+                    <td>Avoid alcohol; take folic acid; report dry cough, bleeding.</td>
+                    <td>Antidote: Leucovorin (for high doses). NSAIDs ↑ toxicity.</td>
+                </tr>
+                <tr>
+                    <td>Tamoxifen</td>
+                    <td>Used to treat and prevent hormone‑positive breast cancer.</td>
+                    <td><ul><li>Hot flashes</li><li>Blood clots</li><li>Endometrial cancer</li></ul></td>
+                    <td>Monitor for vaginal bleeding; avoid in pregnancy.</td>
+                    <td>Report abnormal vaginal bleeding, leg swelling/pain.</td>
+                    <td>Strong CYP2D6 inhibitors (paroxetine) ↓ efficacy.</td>
+                </tr>
+
+                <!-- ********** CARDIOVASCULAR ********** -->
+                <tr class="system-header"><td colspan="6">❤️ CARDIOVASCULAR</td></tr>
+                <tr class="high-yield">
+                    <td>Furosemide (Lasix) 🏆</td>
+                    <td>Used to remove excess fluid in heart failure, kidney disease, and hypertension.</td>
+                    <td><ul><li>Low potassium</li><li>Hearing damage (rapid IV)</li><li>Dehydration</li></ul></td>
+                    <td>Monitor K+, Mg, Cr, BP; contraindicated in anuria.</td>
+                    <td>Weigh daily, eat potassium‑rich foods, change position slowly.</td>
+                    <td>Digoxin toxicity (if low K). Avoid ototoxic drugs.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Hydrochlorothiazide (HCTZ) 🏆</td>
+                    <td>Used to lower blood pressure and reduce mild edema.</td>
+                    <td><ul><li>Low potassium</li><li>High blood sugar</li><li>High uric acid</li><li>Sun sensitivity</li></ul></td>
+                    <td>Monitor K+, glucose, uric acid; caution with sulfa allergy.</td>
+                    <td>Take in morning; avoid sunlight; report muscle weakness.</td>
+                    <td>Lithium ↑ levels; NSAIDs ↓ effect.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Spironolactone 🏆</td>
+                    <td>Used for heart failure, high blood pressure, and excess aldosterone.</td>
+                    <td><ul><li>High potassium</li><li>Breast tenderness/enlargement</li></ul></td>
+                    <td>Monitor K+, Cr; avoid in anuria, high K.</td>
+                    <td>Avoid salt substitutes, high‑K foods; report breast tenderness.</td>
+                    <td>ACEi/ARBs ↑ hyperkalemia risk.</td>
+                </tr>
+                <tr>
+                    <td>Bumetanide (Bumex)</td>
+                    <td>Used for fluid overload in heart failure or kidney disease.</td>
+                    <td><ul><li>Low potassium</li><li>Hearing damage</li></ul></td>
+                    <td>Monitor K+, Cr, BP.</td>
+                    <td>Same as furosemide.</td>
+                    <td>Same as furosemide.</td>
+                </tr>
+                <tr>
+                    <td>Chlorthalidone</td>
+                    <td>Used to lower blood pressure (longer‑acting thiazide).</td>
+                    <td><ul><li>Low potassium</li><li>High blood sugar</li></ul></td>
+                    <td>Monitor K+, glucose.</td>
+                    <td>Take in morning; photosensitivity precautions.</td>
+                    <td>Similar to HCTZ.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Metoprolol (Lopressor) 🏆</td>
+                    <td>Used for high blood pressure, angina, heart failure, and after heart attack.</td>
+                    <td><ul><li>Slow heart rate</li><li>Fatigue</li><li>Masks low blood sugar symptoms</li></ul></td>
+                    <td>Hold for HR <60, SBP <90; avoid in asthma (relative).</td>
+                    <td>Do not stop abruptly; monitor HR/BP; report dizziness.</td>
+                    <td>Verapamil/diltiazem ↑ bradycardia risk.</td>
+                </tr>
+                <tr>
+                    <td>Carvedilol (Coreg)</td>
+                    <td>Used for heart failure and high blood pressure (nonselective beta‑blocker).</td>
+                    <td><ul><li>Dizziness on standing</li><li>Slow heart rate</li></ul></td>
+                    <td>Monitor HR, BP, weight (fluid retention).</td>
+                    <td>Take with food; rise slowly.</td>
+                    <td>Same as metoprolol.</td>
+                </tr>
+                <tr>
+                    <td>Propranolol (Inderal)</td>
+                    <td>Used for high blood pressure, migraine, essential tremor, and stage fright.</td>
+                    <td><ul><li>Wheezing (can trigger asthma)</li><li>Slow heart rate</li></ul></td>
+                    <td>Contraindicated in asthma, heart block; monitor HR.</td>
+                    <td>Same; report wheezing.</td>
+                    <td>Same as metoprolol.</td>
+                </tr>
+                <tr>
+                    <td>Atenolol (Tenormin)</td>
+                    <td>Used for high blood pressure and angina (cardioselective).</td>
+                    <td><ul><li>Slow heart rate</li><li>Cold hands/feet</li></ul></td>
+                    <td>Monitor HR, BP.</td>
+                    <td>Do not stop abruptly.</td>
+                    <td>Less CNS effects, otherwise similar.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Lisinopril (Prinivil) 🏆</td>
+                    <td>Used for high blood pressure, heart failure, and protecting kidneys in diabetes.</td>
+                    <td><ul><li>Dry cough</li><li>High potassium</li><li>Swelling of lips/face (angioedema)</li></ul></td>
+                    <td>Monitor K+, Cr; avoid in pregnancy, hx of angioedema.</td>
+                    <td>Report swelling of lips/face, persistent cough.</td>
+                    <td>ARBs alternative. Avoid K+ supplements, NSAIDs.</td>
+                </tr>
+                <tr>
+                    <td>Enalapril (Vasotec)</td>
+                    <td>Same as lisinopril – ACE inhibitor for HTN, HF.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Captopril (Capoten)</td>
+                    <td>ACE inhibitor; used for HTN, HF (short‑acting).</td>
+                    <td>Same + rash, taste disturbance.</td>
+                    <td>Same.</td>
+                    <td>Take 1h before meals.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Valsartan (Diovan)</td>
+                    <td>ARB; used for HTN, HF – alternative if ACEi cough.</td>
+                    <td><ul><li>High potassium</li><li>Dizziness</li></ul></td>
+                    <td>Monitor K+, Cr; avoid in pregnancy.</td>
+                    <td>No cough; report swelling.</td>
+                    <td>Same as ACEi (no cough).</td>
+                </tr>
+                <tr>
+                    <td>Losartan (Cozaar)</td>
+                    <td>ARB; used for HTN and diabetic kidney disease.</td>
+                    <td>Same as valsartan.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Amlodipine (Norvasc) 🏆</td>
+                    <td>Used for high blood pressure and chest pain (angina).</td>
+                    <td><ul><li>Ankle swelling</li><li>Flushing</li><li>Headache</li></ul></td>
+                    <td>Monitor BP, edema.</td>
+                    <td>Report ankle swelling; avoid grapefruit juice.</td>
+                    <td>Grapefruit ↑ levels.</td>
+                </tr>
+                <tr>
+                    <td>Nifedipine (Procardia)</td>
+                    <td>Used for HTN and angina (short‑acting mostly avoided).</td>
+                    <td>Same + reflex fast heart rate.</td>
+                    <td>Monitor BP, HR.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Diltiazem (Cardizem) 🏆</td>
+                    <td>Used for fast heart rate (AFib), angina, and HTN.</td>
+                    <td><ul><li>Slow heart rate</li><li>Constipation</li><li>Heart block</li></ul></td>
+                    <td>Monitor HR, BP, ECG; avoid in sick sinus syndrome.</td>
+                    <td>Report slow pulse, constipation.</td>
+                    <td>Avoid with beta‑blockers; grapefruit ↑ levels.</td>
+                </tr>
+                <tr>
+                    <td>Verapamil (Calan)</td>
+                    <td>Used for AFib, angina, HTN – more constipating.</td>
+                    <td>Same + more constipation.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Digoxin (Lanoxin) 🏆</td>
+                    <td>Used for heart failure and to control ventricular rate in AFib.</td>
+                    <td><ul><li>Nausea, vomiting</li><li>Vision changes (yellow halos)</li><li>Irregular heartbeat</li></ul></td>
+                    <td>Monitor level (0.5‑2 ng/mL), K+, Mg, Cr; hold HR <60.</td>
+                    <td>Take pulse daily; report vision changes, N/V.</td>
+                    <td>Low K ↑ toxicity. Antidote: Digibind.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Nitroglycerin (NTG) 🏆</td>
+                    <td>Used to relieve acute chest pain (angina).</td>
+                    <td><ul><li>Headache</li><li>Dizziness</li><li>Flushing</li></ul></td>
+                    <td>Contraindicated with PDE‑5 inhibitors (sildenafil).</td>
+                    <td>Sit/lie down; call 911 if no relief after 1 tab; protect from light.</td>
+                    <td>Severe hypotension with PDE‑5 inhibitors.</td>
+                </tr>
+                <tr>
+                    <td>Isosorbide mononitrate</td>
+                    <td>Used to prevent angina (long‑acting nitrate).</td>
+                    <td>Headache, hypotension.</td>
+                    <td>Same as NTG.</td>
+                    <td>Take regularly; tolerance possible.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Atorvastatin (Lipitor) 🏆</td>
+                    <td>Used to lower cholesterol and reduce heart attack/stroke risk.</td>
+                    <td><ul><li>Muscle aches</li><li>Liver damage</li></ul></td>
+                    <td>Monitor LFTs, CK; avoid in active liver disease.</td>
+                    <td>Report unexplained muscle pain, weakness; avoid grapefruit.</td>
+                    <td>Grapefruit juice ↑ levels; gemfibrozil ↑ myopathy risk.</td>
+                </tr>
+                <tr>
+                    <td>Simvastatin (Zocor)</td>
+                    <td>Same as atorvastatin – cholesterol lowering.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Take in evening; avoid grapefruit.</td>
+                    <td>Same; stronger interactions with amiodarone, verapamil.</td>
+                </tr>
+                <tr>
+                    <td>Rosuvastatin (Crestor)</td>
+                    <td>Same – potent statin for LDL lowering.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Take any time; report muscle pain.</td>
+                    <td>Less CYP interaction, but still monitor.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Clonidine (Catapres) 🏆</td>
+                    <td>Used for high blood pressure (second‑line).</td>
+                    <td><ul><li>Dry mouth</li><li>Drowsiness</li><li>Rebound high BP if stopped suddenly</li></ul></td>
+                    <td>Monitor BP; do not stop abruptly.</td>
+                    <td>Do not skip doses; taper when discontinuing.</td>
+                    <td>Beta‑blockers ↑ rebound risk.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Alteplase (tPA) 🏆</td>
+                    <td>Used to dissolve clots in ischemic stroke, massive PE, and heart attack.</td>
+                    <td><ul><li>Bleeding (especially in the brain)</li></ul></td>
+                    <td>Strict contraindications: recent stroke/surgery, bleeding risk.</td>
+                    <td>N/A (hospital use only).</td>
+                    <td>Avoid antiplatelets/anticoagulants during infusion.</td>
+                </tr>
+                <tr>
+                    <td>Adenosine (Adenocard)</td>
+                    <td>Used to stop certain fast heart rhythms (PSVT).</td>
+                    <td><ul><li>Brief pause in heartbeat</li><li>Flushing</li><li>Chest pressure</li></ul></td>
+                    <td>ECG monitoring; caution in asthma.</td>
+                    <td>Explain transient symptoms.</td>
+                    <td>Caffeine/theophylline block effect.</td>
+                </tr>
+                <tr>
+                    <td>Amiodarone (Cordarone)</td>
+                    <td>Used for life‑threatening ventricular arrhythmias and AFib.</td>
+                    <td><ul><li>Lung scarring</li><li>Thyroid problems</li><li>Corneal deposits</li><li>Blue‑gray skin</li></ul></td>
+                    <td>Monitor LFTs, TFTs, chest x‑ray, eye exams; avoid in severe bradycardia.</td>
+                    <td>Report shortness of breath, vision changes, skin discoloration.</td>
+                    <td>Increases levels of warfarin, digoxin, statins.</td>
+                </tr>
+                <tr>
+                    <td>Milrinone (Primacor)</td>
+                    <td>Used short‑term for severe heart failure (increases heart contraction).</td>
+                    <td><ul><li>Low blood pressure</li><li>Arrhythmias</li><li>Low platelets</li></ul></td>
+                    <td>Monitor BP, HR, platelets.</td>
+                    <td>N/A (hospital use).</td>
+                    <td>May potentiate vasodilators.</td>
+                </tr>
+
+                <!-- ********** RESPIRATORY ********** -->
+                <tr class="system-header"><td colspan="6">🌬️ RESPIRATORY</td></tr>
+                <tr class="high-yield">
+                    <td>Albuterol (Proventil) 🏆</td>
+                    <td>Used as a rescue inhaler to open airways during asthma/COPD attacks.</td>
+                    <td><ul><li>Fast heartbeat</li><li>Shakiness</li><li>Nervousness</li><li>Low potassium</li></ul></td>
+                    <td>Monitor HR, K+ (with high doses).</td>
+                    <td>Use as needed; rinse mouth if also using steroid inhaler.</td>
+                    <td>Other beta‑agonists ↑ heart effects.</td>
+                </tr>
+                <tr>
+                    <td>Ipratropium (Atrovent)</td>
+                    <td>Used as a bronchodilator in COPD and asthma (anticholinergic).</td>
+                    <td><ul><li>Dry mouth</li><li>Cough</li></ul></td>
+                    <td>Avoid with peanut/soy allergy (HFA).</td>
+                    <td>Do not get in eyes.</td>
+                    <td>May combine with albuterol.</td>
+                </tr>
+                <tr>
+                    <td>Tiotropium (Spiriva)</td>
+                    <td>Used daily for long‑term COPD management (anticholinergic).</td>
+                    <td><ul><li>Dry mouth</li><li>Constipation</li></ul></td>
+                    <td>Contraindicated in narrow‑angle glaucoma.</td>
+                    <td>Capsules for inhalation only; do not swallow.</td>
+                    <td>Avoid with other anticholinergics.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Fluticasone/Salmeterol (Advair) 🏆</td>
+                    <td>Used daily to control asthma/COPD (steroid + long‑acting bronchodilator).</td>
+                    <td><ul><li>Oral thrush</li><li>Hoarseness</li><li>High blood sugar</li></ul></td>
+                    <td>Monitor growth in children, blood glucose.</td>
+                    <td>Rinse mouth after use; not for acute symptoms.</td>
+                    <td>Avoid strong CYP3A4 inhibitors (increase steroid levels).</td>
+                </tr>
+                <tr>
+                    <td>Beclomethasone (QVAR)</td>
+                    <td>Inhaled steroid for asthma control.</td>
+                    <td>Same as fluticasone.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Methylprednisolone (Solu‑Medrol) 🏆</td>
+                    <td>Used for acute asthma, allergic reactions (IV/PO steroid).</td>
+                    <td><ul><li>High blood sugar</li><li>Suppresses immune system</li><li>Mood changes</li></ul></td>
+                    <td>Monitor glucose, electrolytes.</td>
+                    <td>Do not stop abruptly; report signs of infection.</td>
+                    <td>May increase cyclosporine levels, decrease warfarin effect.</td>
+                </tr>
+                <tr>
+                    <td>Prednisone</td>
+                    <td>Oral steroid for chronic inflammation, asthma, autoimmune diseases.</td>
+                    <td>Same + weight gain, bone thinning.</td>
+                    <td>Monitor glucose, BP, bone density.</td>
+                    <td>Take with food; taper off.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Montelukast (Singulair)</td>
+                    <td>Used for asthma and allergies (leukotriene blocker).</td>
+                    <td><ul><li>Headache</li><li>Mood/behavior changes (rare)</li></ul></td>
+                    <td>Monitor for neuropsychiatric events.</td>
+                    <td>Take in evening; report agitation, depression.</td>
+                    <td>No major interactions.</td>
+                </tr>
+                <tr>
+                    <td>Theophylline</td>
+                    <td>Oral bronchodilator for persistent asthma/COPD (second‑line).</td>
+                    <td><ul><li>Fast heart rate</li><li>Nausea</li><li>Seizures (if toxic)</li></ul></td>
+                    <td>Monitor level (5‑15 mcg/mL); avoid in seizure disorders.</td>
+                    <td>Avoid caffeine; report palpitations, vomiting.</td>
+                    <td>Cimetidine, ciprofloxacin, macrolides increase levels.</td>
+                </tr>
+                <tr>
+                    <td>Acetylcysteine (Mucomyst)</td>
+                    <td>Used to loosen thick mucus in lungs; also antidote for Tylenol overdose.</td>
+                    <td><ul><li>Nausea</li><li>Bronchospasm (if inhaled)</li></ul></td>
+                    <td>Monitor for bronchospasm in asthmatics.</td>
+                    <td>Expect rotten‑egg smell.</td>
+                    <td>Antidote for acetaminophen overdose.</td>
+                </tr>
+                <tr>
+                    <td>Codeine</td>
+                    <td>Used for mild‑moderate pain and as a cough suppressant.</td>
+                    <td><ul><li>Constipation</li><li>Drowsiness</li><li>Slow breathing</li></ul></td>
+                    <td>Contraindicated in children <12 post‑tonsillectomy; monitor RR.</td>
+                    <td>Take with food; avoid driving; increase fluids/fiber.</td>
+                    <td>Avoid with other CNS depressants.</td>
+                </tr>
+
+                <!-- ********** GASTROINTESTINAL / NUTRITION ********** -->
+                <tr class="system-header"><td colspan="6">🍽️ GASTROINTESTINAL / NUTRITION</td></tr>
+                <tr class="high-yield">
+                    <td>Omeprazole (Prilosec) 🏆</td>
+                    <td>Used for GERD, ulcers, and heartburn (reduces stomach acid).</td>
+                    <td><ul><li>Headache</li><li>Diarrhea</li><li>Long‑term: osteoporosis, C. diff, low magnesium</li></ul></td>
+                    <td>Monitor Mg (long‑term), bone density.</td>
+                    <td>Take before first meal; do not crush.</td>
+                    <td>May decrease clopidogrel effect; increase methotrexate.</td>
+                </tr>
+                <tr>
+                    <td>Esomeprazole (Nexium)</td>
+                    <td>Same as omeprazole – PPI for acid reduction.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Pantoprazole (Protonix)</td>
+                    <td>PPI; used for GERD, stress ulcer prophylaxis (IV/PO).</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Fewer interactions.</td>
+                </tr>
+                <tr>
+                    <td>Sucralfate (Carafate)</td>
+                    <td>Coats stomach ulcers to protect them from acid.</td>
+                    <td><ul><li>Constipation</li></ul></td>
+                    <td>None.</td>
+                    <td>Take on empty stomach 1h before meals; separate from other drugs by 2h.</td>
+                    <td>Binds many drugs (digoxin, phenytoin, warfarin).</td>
+                </tr>
+                <tr>
+                    <td>Misoprostol (Cytotec)</td>
+                    <td>Prevents NSAID‑induced ulcers; also used for labor induction.</td>
+                    <td><ul><li>Diarrhea</li><li>Cramping</li></ul></td>
+                    <td>Contraindicated in pregnancy (causes abortion).</td>
+                    <td>Take with food; use reliable contraception.</td>
+                    <td>Avoid antacids (↑ diarrhea).</td>
+                </tr>
+                <tr>
+                    <td>Metoclopramide (Reglan)</td>
+                    <td>Used for gastroparesis and GERD (speeds stomach emptying).</td>
+                    <td><ul><li>Drowsiness</li><li>Involuntary movements (tardive dyskinesia)</li></ul></td>
+                    <td>Monitor for abnormal movements; avoid in Parkinson's.</td>
+                    <td>Report any uncontrolled muscle movements.</td>
+                    <td>Avoid with other CNS depressants.</td>
+                </tr>
+                <tr>
+                    <td>Lactulose</td>
+                    <td>Used for constipation and to lower ammonia in liver disease.</td>
+                    <td><ul><li>Diarrhea</li><li>Gas</li><li>Cramping</li></ul></td>
+                    <td>Monitor mental status (hepatic encephalopathy).</td>
+                    <td>Goal 2‑3 soft stools daily; may be mixed with juice.</td>
+                    <td>No major interactions.</td>
+                </tr>
+                <tr>
+                    <td>Ondansetron (Zofran)</td>
+                    <td>Used to prevent nausea and vomiting (especially chemo, post‑op).</td>
+                    <td><ul><li>Headache</li><li>Constipation</li><li>QT prolongation (ECG change)</li></ul></td>
+                    <td>Monitor ECG if repeated doses.</td>
+                    <td>Report palpitations.</td>
+                    <td>Avoid other QT‑prolonging drugs.</td>
+                </tr>
+                <tr>
+                    <td>Pancrelipase (Creon)</td>
+                    <td>Used to replace digestive enzymes in cystic fibrosis, pancreatitis.</td>
+                    <td><ul><li>Nausea</li><li>Diarrhea</li></ul></td>
+                    <td>Monitor for fibrosing colonopathy (rare).</td>
+                    <td>Take with every meal/snack; do not crush.</td>
+                    <td>↓ absorption of iron, folate.</td>
+                </tr>
+                <tr>
+                    <td>Docusate sodium (Colace)</td>
+                    <td>Used to soften stools (laxative) – prevents straining.</td>
+                    <td><ul><li>Mild GI cramping</li></ul></td>
+                    <td>None.</td>
+                    <td>Take with plenty of water.</td>
+                    <td>None significant.</td>
+                </tr>
+                <tr>
+                    <td>Sodium polystyrene sulfonate (Kayexalate)</td>
+                    <td>Used to lower high potassium levels by exchanging sodium for K in the gut.</td>
+                    <td><ul><li>Nausea</li><li>Constipation</li><li>Intestinal damage (rare)</li></ul></td>
+                    <td>Monitor K+, bowel sounds; avoid in post‑op bowel.</td>
+                    <td>May cause loose stools.</td>
+                    <td>Avoid with antacids (alkalosis).</td>
+                </tr>
+                <tr>
+                    <td>Total Parenteral Nutrition (TPN)</td>
+                    <td>IV nutrition for patients who cannot eat.</td>
+                    <td><ul><li>High blood sugar</li><li>Electrolyte imbalances</li><li>Line infection</li></ul></td>
+                    <td>Monitor glucose, electrolytes, LFTs, daily weight.</td>
+                    <td>Report fever, chills (line infection).</td>
+                    <td>Do not stop abruptly (rebound low blood sugar).</td>
+                </tr>
+                <tr>
+                    <td>Orlistat (Xenical)</td>
+                    <td>Used for weight loss – blocks fat absorption.</td>
+                    <td><ul><li>Oily spotting</li><li>Fecal urgency</li><li>Gas</li></ul></td>
+                    <td>Monitor weight, fat‑soluble vitamin levels.</td>
+                    <td>Take with fat‑containing meals; take multivitamin at bedtime.</td>
+                    <td>↓ absorption of cyclosporine, amiodarone.</td>
+                </tr>
+                <tr>
+                    <td>Bethanechol (Urecholine)</td>
+                    <td>Used for urinary retention and GERD (stimulates bladder and GI).</td>
+                    <td><ul><li>Cramping</li><li>Diarrhea</li><li>Salivation</li><li>Slow heart rate</li></ul></td>
+                    <td>Contraindicated in obstruction, asthma, overactive thyroid.</td>
+                    <td>Report excessive salivation, sweating.</td>
+                    <td>Avoid with other cholinergic drugs.</td>
+                </tr>
+                <tr>
+                    <td>Sulfasalazine (Azulfidine)</td>
+                    <td>Used for ulcerative colitis and rheumatoid arthritis.</td>
+                    <td><ul><li>Nausea</li><li>Orange‑yellow urine/skin</li><li>Sun sensitivity</li></ul></td>
+                    <td>Monitor CBC, LFTs; contraindicated in sulfa allergy.</td>
+                    <td>Take with plenty of water; use sunscreen.</td>
+                    <td>↓ folic acid absorption; may ↑ warfarin.</td>
+                </tr>
+
+                <!-- ********** NEUROLOGIC ********** -->
+                <tr class="system-header"><td colspan="6">🧠 NEUROLOGIC</td></tr>
+                <tr class="high-yield">
+                    <td>Phenytoin (Dilantin) 🏆</td>
+                    <td>Used to prevent and treat tonic‑clonic and partial seizures.</td>
+                    <td><ul><li>Swollen gums</li><li>Nystagmus (eye jerking)</li><li>Unsteady gait (toxic)</li></ul></td>
+                    <td>Monitor level (10‑20 mcg/mL), LFTs, CBC.</td>
+                    <td>Good oral hygiene; report unsteady walk, slurred speech.</td>
+                    <td>Enteral feedings decrease absorption; many drug interactions.</td>
+                </tr>
+                <tr>
+                    <td>Levetiracetam (Keppra)</td>
+                    <td>Used for various seizure types (broad‑spectrum).</td>
+                    <td><ul><li>Drowsiness</li><li>Irritability</li><li>Mood changes</li></ul></td>
+                    <td>Monitor for behavioral changes.</td>
+                    <td>Report mood swings, suicidal thoughts.</td>
+                    <td>No significant interactions.</td>
+                </tr>
+                <tr>
+                    <td>Carbamazepine (Tegretol)</td>
+                    <td>Used for seizures, trigeminal neuralgia, bipolar disorder.</td>
+                    <td><ul><li>Low sodium (SIADH)</li><li>Low white blood cells</li><li>Stevens‑Johnson rash</li></ul></td>
+                    <td>Monitor CBC, sodium, LFTs; contraindicated with MAOIs.</td>
+                    <td>Report rash, fever, sore throat.</td>
+                    <td>Auto‑induces metabolism; many drug interactions.</td>
+                </tr>
+                <tr>
+                    <td>Valproic acid (Depakote)</td>
+                    <td>Used for seizures, bipolar disorder, migraine prevention.</td>
+                    <td><ul><li>Liver damage</li><li>Pancreatitis</li><li>Low platelets</li><li>Tremor</li></ul></td>
+                    <td>Monitor LFTs, amylase, CBC, level (50‑100 mcg/mL).</td>
+                    <td>Report abdominal pain, jaundice, bleeding.</td>
+                    <td>Avoid with other liver‑toxic drugs.</td>
+                </tr>
+                <tr>
+                    <td>Gabapentin (Neurontin)</td>
+                    <td>Used for seizures and nerve pain (postherpetic neuralgia).</td>
+                    <td><ul><li>Drowsiness</li><li>Dizziness</li><li>Swelling in legs</li></ul></td>
+                    <td>Monitor kidney function (dose adjustment).</td>
+                    <td>Avoid driving until effects known.</td>
+                    <td>No major interactions.</td>
+                </tr>
+                <tr>
+                    <td>Pregabalin (Lyrica)</td>
+                    <td>Used for nerve pain, fibromyalgia, and partial seizures.</td>
+                    <td><ul><li>Same + weight gain</li><li>Blurred vision</li></ul></td>
+                    <td>Monitor kidney function.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Carbidopa‑Levodopa (Sinemet) 🏆</td>
+                    <td>Used to treat Parkinson's disease (replaces dopamine).</td>
+                    <td><ul><li>Involuntary movements</li><li>Dark urine/sweat</li><li>Dizziness on standing</li></ul></td>
+                    <td>Monitor for "on‑off" fluctuations; avoid with MAOIs.</td>
+                    <td>Takes weeks to work; change position slowly; urine color harmless.</td>
+                    <td>Avoid high‑protein meals (decrease absorption).</td>
+                </tr>
+                <tr>
+                    <td>Benztropine (Cogentin)</td>
+                    <td>Used for drug‑induced movement disorders (EPS) and Parkinsonism.</td>
+                    <td><ul><li>Dry mouth</li><li>Constipation</li><li>Urinary retention</li><li>Confusion</li></ul></td>
+                    <td>Monitor for anticholinergic effects; avoid in narrow‑angle glaucoma.</td>
+                    <td>Use sugar‑free gum for dry mouth; report difficulty urinating.</td>
+                    <td>Additive with other anticholinergics.</td>
+                </tr>
+                <tr>
+                    <td>Riluzole (Rilutek)</td>
+                    <td>Used to slow progression of ALS (Lou Gehrig's disease).</td>
+                    <td><ul><li>Nausea</li><li>Dizziness</li><li>Liver injury</li></ul></td>
+                    <td>Monitor LFTs.</td>
+                    <td>Take on empty stomach; report jaundice.</td>
+                    <td>Avoid liver‑toxic drugs.</td>
+                </tr>
+                <tr>
+                    <td>Sumatriptan (Imitrex)</td>
+                    <td>Used to stop migraine headaches.</td>
+                    <td><ul><li>Tingling</li><li>Chest tightness</li><li>Dizziness</li></ul></td>
+                    <td>Contraindicated in coronary artery disease, uncontrolled HTN.</td>
+                    <td>Take at first sign of migraine; report chest pain.</td>
+                    <td>Avoid ergots, MAOIs.</td>
+                </tr>
+                <tr>
+                    <td>Buspirone (Buspar)</td>
+                    <td>Used for generalized anxiety (non‑sedating).</td>
+                    <td><ul><li>Dizziness</li><li>Nausea</li><li>Headache</li></ul></td>
+                    <td>No abuse potential; no sedation.</td>
+                    <td>Takes 2‑4 weeks for effect; avoid grapefruit.</td>
+                    <td>Grapefruit increases levels.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Diazepam (Valium) 🏆</td>
+                    <td>Used for anxiety, seizures, muscle spasms, alcohol withdrawal.</td>
+                    <td><ul><li>Drowsiness</li><li>Unsteady walk</li><li>Slow breathing (high doses)</li><li>Dependence</li></ul></td>
+                    <td>Contraindicated in acute narrow‑angle glaucoma, with CNS depressants.</td>
+                    <td>Do not stop abruptly; avoid alcohol.</td>
+                    <td>Antidote: Flumazenil (use with caution).</td>
+                </tr>
+                <tr>
+                    <td>Lorazepam (Ativan)</td>
+                    <td>Same as diazepam – anxiety, seizures.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Midazolam (Versed)</td>
+                    <td>Used for procedural sedation and anesthesia.</td>
+                    <td>Same + memory loss.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Flumazenil (Romazicon)</td>
+                    <td>Used to reverse benzodiazepine overdose.</td>
+                    <td><ul><li>Seizures (in dependent patients)</li><li>Agitation</li></ul></td>
+                    <td>Contraindicated in TCA overdose, long‑term benzo use.</td>
+                    <td>N/A.</td>
+                    <td>Reverses benzodiazepines.</td>
+                </tr>
+                <tr>
+                    <td>Scopolamine</td>
+                    <td>Used for motion sickness and to dry secretions.</td>
+                    <td><ul><li>Dry mouth</li><li>Blurred vision</li><li>Drowsiness</li></ul></td>
+                    <td>Contraindicated in narrow‑angle glaucoma, GI obstruction.</td>
+                    <td>Apply patch behind ear 4h before travel; wash hands after.</td>
+                    <td>Avoid with other anticholinergics.</td>
+                </tr>
+
+                <!-- ********** ENDOCRINE ********** -->
+                <tr class="system-header"><td colspan="6">🩸 ENDOCRINE</td></tr>
+                <tr class="high-yield">
+                    <td>Insulin (various) 🏆</td>
+                    <td>Used to lower blood sugar in diabetes mellitus.</td>
+                    <td><ul><li>Low blood sugar</li><li>Fat lumps at injection site</li></ul></td>
+                    <td>Monitor blood glucose, A1c; regular insulin only IV.</td>
+                    <td>Rotate sites; know onset/peak; carry sugar source.</td>
+                    <td>Beta‑blockers mask low blood sugar symptoms.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Metformin (Glucophage) 🏆</td>
+                    <td>First‑line oral drug for type 2 diabetes.</td>
+                    <td><ul><li>Upset stomach</li><li>Lactic acidosis (rare)</li><li>Low vitamin B12</li></ul></td>
+                    <td>Hold 48h after IV contrast; monitor kidney function, B12.</td>
+                    <td>Take with meals; report severe weakness, muscle pain.</td>
+                    <td>Avoid alcohol, topiramate (increase lactic acidosis risk).</td>
+                </tr>
+                <tr>
+                    <td>Glyburide (DiaBeta)</td>
+                    <td>Oral diabetes drug (sulfonylurea) that increases insulin release.</td>
+                    <td><ul><li>Low blood sugar</li><li>Weight gain</li></ul></td>
+                    <td>Monitor glucose; avoid in elderly (Beers criteria).</td>
+                    <td>Take with meals; report low blood sugar symptoms.</td>
+                    <td>NSAIDs, sulfonamides increase low blood sugar risk.</td>
+                </tr>
+                <tr>
+                    <td>Glipizide (Glucotrol)</td>
+                    <td>Same as glyburide – sulfonylurea for type 2 DM.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Take 30min before meals.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Pioglitazone (Actos)</td>
+                    <td>Oral diabetes drug (TZD) – improves insulin sensitivity.</td>
+                    <td><ul><li>Fluid retention</li><li>Weight gain</li><li>Worsening heart failure</li></ul></td>
+                    <td>Monitor for edema, heart failure symptoms, LFTs.</td>
+                    <td>Report rapid weight gain, shortness of breath.</td>
+                    <td>Avoid in active bladder cancer.</td>
+                </tr>
+                <tr>
+                    <td>Sitagliptin (Januvia)</td>
+                    <td>Oral diabetes drug (DPP‑4 inhibitor) – increases insulin.</td>
+                    <td><ul><li>Upper respiratory infection</li><li>Pancreatitis (rare)</li></ul></td>
+                    <td>Monitor for severe abdominal pain.</td>
+                    <td>Report persistent abdominal pain.</td>
+                    <td>No major interactions.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Levothyroxine (Synthroid) 🏆</td>
+                    <td>Used to replace thyroid hormone in hypothyroidism.</td>
+                    <td><ul><li>If dose too high: fast heart rate, anxiety, weight loss</li></ul></td>
+                    <td>Monitor TSH, T4; take on empty stomach.</td>
+                    <td>Take same time each day (AM); separate from calcium/iron by 4h.</td>
+                    <td>Many drugs decrease absorption (calcium, iron, PPIs).</td>
+                </tr>
+                <tr>
+                    <td>Propylthiouracil (PTU)</td>
+                    <td>Used for hyperthyroidism (blocks thyroid hormone production).</td>
+                    <td><ul><li>Liver damage</li><li>Low white blood cells</li><li>Rash</li></ul></td>
+                    <td>Monitor LFTs, CBC; pregnancy category D.</td>
+                    <td>Report jaundice, fever, sore throat.</td>
+                    <td>Avoid with other liver‑toxic drugs.</td>
+                </tr>
+                <tr>
+                    <td>Methimazole (Tapazole)</td>
+                    <td>Same as PTU – for hyperthyroidism (less liver toxicity).</td>
+                    <td>Same (less hepatotoxic).</td>
+                    <td>Monitor CBC.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Hydrocortisone (Cortef) 🏆</td>
+                    <td>Used for adrenal insufficiency (Addison's) and inflammation.</td>
+                    <td><ul><li>High blood sugar</li><li>Weak immune system</li><li>Hides infection</li></ul></td>
+                    <td>Monitor glucose, electrolytes.</td>
+                    <td>Do not stop abruptly; need extra during stress.</td>
+                    <td>NSAIDs increase GI bleed risk.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Desmopressin (DDAVP) 🏆</td>
+                    <td>Used for diabetes insipidus and bedwetting (mimics ADH).</td>
+                    <td><ul><li>Water intoxication (headache, low sodium)</li></ul></td>
+                    <td>Monitor sodium, urine output, specific gravity.</td>
+                    <td>Report headache, confusion, weight gain.</td>
+                    <td>Avoid with other vasopressors.</td>
+                </tr>
+                <tr>
+                    <td>Growth Hormone (Somatropin)</td>
+                    <td>Used for growth failure in children and adult deficiency.</td>
+                    <td><ul><li>Swelling</li><li>Joint pain</li><li>Increased pressure in skull</li></ul></td>
+                    <td>Monitor growth, thyroid function, glucose.</td>
+                    <td>Report severe headache, vision changes.</td>
+                    <td>Glucocorticoids inhibit growth effect.</td>
+                </tr>
+
+                <!-- ********** GENITOURINARY / RENAL ********** -->
+                <tr class="system-header"><td colspan="6">🚽 GENITOURINARY / RENAL</td></tr>
+                <tr>
+                    <td>Oxybutynin (Ditropan)</td>
+                    <td>Used for overactive bladder (urge incontinence).</td>
+                    <td><ul><li>Dry mouth</li><li>Constipation</li><li>Urinary retention</li><li>Heat intolerance</li></ul></td>
+                    <td>Contraindicated in untreated narrow‑angle glaucoma.</td>
+                    <td>Avoid overheating; use sugar‑free gum.</td>
+                    <td>Avoid with other anticholinergics.</td>
+                </tr>
+                <tr>
+                    <td>Tolterodine (Detrol)</td>
+                    <td>Same as oxybutynin – for overactive bladder.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Phenazopyridine (Pyridium)</td>
+                    <td>Used to relieve pain/burning of UTIs (urinary analgesic).</td>
+                    <td><ul><li>Orange‑red urine (harmless)</li><li>Stomach upset</li></ul></td>
+                    <td>Monitor LFTs, kidney function (avoid long‑term).</td>
+                    <td>Urine discoloration is normal; may stain clothes.</td>
+                    <td>No major interactions.</td>
+                </tr>
+                <tr>
+                    <td>Terazosin (Hytrin)</td>
+                    <td>Used for BPH and high blood pressure (alpha‑blocker).</td>
+                    <td><ul><li>Dizziness on standing</li><li>First‑dose fainting</li><li>Dizziness</li></ul></td>
+                    <td>Monitor BP.</td>
+                    <td>Take at bedtime; rise slowly.</td>
+                    <td>Avoid with other alpha‑blockers.</td>
+                </tr>
+                <tr>
+                    <td>Tamsulosin (Flomax)</td>
+                    <td>Used for BPH (alpha‑blocker) – fewer BP effects.</td>
+                    <td><ul><li>Ejaculation problems</li><li>Dizziness</li></ul></td>
+                    <td>Monitor for cataract surgery complications.</td>
+                    <td>Take 30min after same meal each day.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Finasteride (Proscar)</td>
+                    <td>Used for BPH and male pattern baldness (5‑alpha reductase inhibitor).</td>
+                    <td><ul><li>Decreased libido</li><li>Breast tenderness</li></ul></td>
+                    <td>Monitor PSA; women should not handle crushed tabs.</td>
+                    <td>Report breast lumps, nipple discharge.</td>
+                    <td>No major.</td>
+                </tr>
+
+                <!-- ********** PSYCHIATRIC ********** -->
+                <tr class="system-header"><td colspan="6">🧘 PSYCHIATRIC</td></tr>
+                <tr class="high-yield">
+                    <td>Fluoxetine (Prozac) 🏆</td>
+                    <td>Used for depression, OCD, bulimia (SSRI).</td>
+                    <td><ul><li>Sexual problems</li><li>Loss of appetite</li><li>Insomnia</li><li>Serotonin syndrome (overdose)</li></ul></td>
+                    <td>Monitor for worsening depression, suicidal thoughts.</td>
+                    <td>Takes 4‑6 weeks; avoid abrupt stop; report agitation, fever.</td>
+                    <td>Avoid MAOIs (14d washout), St. John's wort.</td>
+                </tr>
+                <tr>
+                    <td>Sertraline (Zoloft)</td>
+                    <td>SSRI for depression, panic, OCD, PTSD.</td>
+                    <td>Same + diarrhea.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Paroxetine (Paxil)</td>
+                    <td>SSRI for depression, anxiety – more weight gain.</td>
+                    <td>Same + more weight gain, withdrawal.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Citalopram (Celexa)</td>
+                    <td>SSRI for depression – risk of QT prolongation at high doses.</td>
+                    <td>Same + QT prolongation.</td>
+                    <td>Monitor ECG in high doses.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Escitalopram (Lexapro)</td>
+                    <td>SSRI for depression and GAD – fewer drug interactions.</td>
+                    <td>Same as citalopram.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Duloxetine (Cymbalta)</td>
+                    <td>SNRI for depression, nerve pain, fibromyalgia.</td>
+                    <td><ul><li>Nausea</li><li>Dry mouth</li><li>Liver damage</li><li>High blood pressure</li></ul></td>
+                    <td>Monitor BP, LFTs.</td>
+                    <td>Swallow whole; taper to stop.</td>
+                    <td>Avoid with MAOIs, alcohol.</td>
+                </tr>
+                <tr>
+                    <td>Venlafaxine (Effexor)</td>
+                    <td>SNRI for depression, anxiety – can raise BP.</td>
+                    <td><ul><li>Nausea</li><li>Drowsiness</li><li>High BP (dose‑related)</li></ul></td>
+                    <td>Monitor BP.</td>
+                    <td>Take with food; taper to stop.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Bupropion (Wellbutrin)</td>
+                    <td>Used for depression and smoking cessation (no sexual side effects).</td>
+                    <td><ul><li>Insomnia</li><li>Seizures (high risk in eating disorders)</li><li>Dry mouth</li></ul></td>
+                    <td>Contraindicated in seizure disorders, eating disorders.</td>
+                    <td>Do not crush SR/XL; take early to avoid insomnia.</td>
+                    <td>Avoid MAOIs, other seizure‑lowering drugs.</td>
+                </tr>
+                <tr>
+                    <td>Trazodone (Desyrel)</td>
+                    <td>Used for depression and often for insomnia (sedating).</td>
+                    <td><ul><li>Drowsiness</li><li>Dizziness on standing</li><li>Priapism (rare)</li></ul></td>
+                    <td>Monitor for prolonged erection.</td>
+                    <td>Take at bedtime; report erection >4h.</td>
+                    <td>Avoid alcohol, other CNS depressants.</td>
+                </tr>
+                <tr>
+                    <td>Amitriptyline (Elavil)</td>
+                    <td>TCA for depression and nerve pain – highly anticholinergic.</td>
+                    <td><ul><li>Dry mouth, constipation</li><li>Dizziness on standing</li><li>Sedation</li><li>Heart toxicity in overdose</li></ul></td>
+                    <td>Monitor ECG, BP; contraindicated with MAOIs.</td>
+                    <td>Take at bedtime; rise slowly; avoid driving.</td>
+                    <td>Avoid with other anticholinergics, QT drugs.</td>
+                </tr>
+                <tr>
+                    <td>Nortriptyline (Pamelor)</td>
+                    <td>TCA for depression and nerve pain – less sedating.</td>
+                    <td>Same (less sedating).</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Lithium (Lithobid) 🏆</td>
+                    <td>Used for bipolar disorder (mood stabilizer).</td>
+                    <td><ul><li>Increased thirst/urination</li><li>Tremor</li><li>Toxicity: vomiting, ataxia, coarse tremor</li></ul></td>
+                    <td>Monitor level (0.6‑1.2 mEq/L), TSH, Cr; avoid with dehydration.</td>
+                    <td>Maintain fluid/salt intake; report vomiting/diarrhea, tremor.</td>
+                    <td>NSAIDs, thiazides, ACEi increase levels.</td>
+                </tr>
+                <tr>
+                    <td>Haloperidol (Haldol)</td>
+                    <td>First‑gen antipsychotic for psychosis, agitation.</td>
+                    <td><ul><li>Movement disorders (EPS)</li><li>QT prolongation</li><li>Neuroleptic malignant syndrome</li></ul></td>
+                    <td>Monitor for EPS, ECG if IV.</td>
+                    <td>Report muscle stiffness, fever, involuntary movements.</td>
+                    <td>Avoid with QT‑prolonging drugs.</td>
+                </tr>
+                <tr>
+                    <td>Risperidone (Risperdal)</td>
+                    <td>Second‑gen antipsychotic for schizophrenia, bipolar.</td>
+                    <td><ul><li>Movement disorders (dose‑dependent)</li><li>Weight gain</li><li>High blood sugar</li><li>Dizziness on standing</li></ul></td>
+                    <td>Monitor weight, glucose, lipids, EPS.</td>
+                    <td>Report rigidity, tremor, restlessness.</td>
+                    <td>Avoid with alcohol, CNS depressants.</td>
+                </tr>
+                <tr>
+                    <td>Olanzapine (Zyprexa)</td>
+                    <td>Second‑gen antipsychotic – significant weight gain.</td>
+                    <td><ul><li>Large weight gain</li><li>Sedation</li><li>High blood sugar</li><li>High cholesterol</li></ul></td>
+                    <td>Monitor metabolic panel, weight.</td>
+                    <td>Healthy diet/exercise; report muscle rigidity, fever.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Quetiapine (Seroquel)</td>
+                    <td>Second‑gen antipsychotic – used in schizophrenia, bipolar, depression.</td>
+                    <td><ul><li>Drowsiness</li><li>Dizziness on standing</li><li>Weight gain</li></ul></td>
+                    <td>Monitor BP, glucose, lipids.</td>
+                    <td>Take at bedtime; rise slowly.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Clozapine (Clozaril)</td>
+                    <td>For treatment‑resistant schizophrenia – requires strict monitoring.</td>
+                    <td><ul><li>Low white blood cells (agranulocytosis)</li><li>Heart inflammation</li><li>Seizures</li><li>Drooling</li></ul></td>
+                    <td>Monitor CBC weekly; monitor for fever, shortness of breath.</td>
+                    <td>Report fever, sore throat, weakness.</td>
+                    <td>Avoid with bone marrow suppressants.</td>
+                </tr>
+                <tr>
+                    <td>Aripiprazole (Abilify)</td>
+                    <td>Second‑gen antipsychotic (partial agonist) – less metabolic effect.</td>
+                    <td><ul><li>Restlessness (akathisia)</li><li>Nausea</li><li>Insomnia</li></ul></td>
+                    <td>Monitor for EPS.</td>
+                    <td>Less weight gain.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Ziprasidone (Geodon)</td>
+                    <td>Second‑gen antipsychotic – must be taken with food.</td>
+                    <td><ul><li>QT prolongation</li><li>Sedation</li></ul></td>
+                    <td>Monitor ECG; take with food.</td>
+                    <td>Report palpitations, fainting.</td>
+                    <td>Avoid with QT‑prolonging drugs.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Alprazolam (Xanax) 🏆</td>
+                    <td>Benzodiazepine for anxiety and panic disorder.</td>
+                    <td>Same as diazepam, short half‑life, rebound anxiety.</td>
+                    <td>Same.</td>
+                    <td>High abuse potential; short‑term use.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Clonazepam (Klonopin)</td>
+                    <td>Benzodiazepine for panic disorder and seizures.</td>
+                    <td>Same, longer half‑life.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Phenelzine (Nardil)</td>
+                    <td>MAOI for depression – requires dietary restrictions.</td>
+                    <td><ul><li>Hypertensive crisis with tyramine foods</li><li>Weight gain</li><li>Liver damage</li></ul></td>
+                    <td>Monitor BP, LFTs; avoid tyramine foods.</td>
+                    <td>Avoid aged cheese, cured meats, soy, wine.</td>
+                    <td>Contraindicated with SSRIs, meperidine.</td>
+                </tr>
+                <tr>
+                    <td>Isocarboxazid (Marplan)</td>
+                    <td>MAOI for depression – same precautions.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+
+                <!-- ********** INFECTIOUS DISEASE ********** -->
+                <tr class="system-header"><td colspan="6">🦠 INFECTIOUS DISEASE</td></tr>
+                <tr>
+                    <td>Amoxicillin</td>
+                    <td>Penicillin antibiotic for ear, throat, sinus infections.</td>
+                    <td><ul><li>Rash</li><li>Diarrhea</li><li>Allergic reaction</li></ul></td>
+                    <td>Assess for penicillin allergy.</td>
+                    <td>Take with or without food; finish course.</td>
+                    <td>Cross‑sensitivity with cephalosporins.</td>
+                </tr>
+                <tr>
+                    <td>Ampicillin</td>
+                    <td>Penicillin antibiotic – similar to amoxicillin.</td>
+                    <td>Same + rash more common.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Cephalexin (Keflex)</td>
+                    <td>First‑gen cephalosporin for skin/soft tissue infections.</td>
+                    <td><ul><li>Diarrhea</li><li>Rash</li></ul></td>
+                    <td>Caution with penicillin allergy.</td>
+                    <td>Take with food if GI upset.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Cefazolin (Ancef)</td>
+                    <td>First‑gen cephalosporin – surgical prophylaxis.</td>
+                    <td>Similar.</td>
+                    <td>Similar.</td>
+                    <td>IV/IM only.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Ceftriaxone (Rocephin)</td>
+                    <td>Third‑gen cephalosporin for serious infections (e.g., meningitis).</td>
+                    <td><ul><li>Gallbladder sludge</li></ul></td>
+                    <td>Avoid with calcium‑containing IV fluids in neonates.</td>
+                    <td>N/A.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Doxycycline</td>
+                    <td>Tetracycline antibiotic for acne, Lyme, respiratory infections.</td>
+                    <td><ul><li>Sun sensitivity</li><li>Stomach upset</li><li>Esophagitis</li></ul></td>
+                    <td>Contraindicated in pregnancy, children <8.</td>
+                    <td>Take with plenty of water; avoid sun; do not take with dairy.</td>
+                    <td>Calcium, iron, antacids decrease absorption.</td>
+                </tr>
+                <tr>
+                    <td>Tetracycline</td>
+                    <td>Same as doxycycline – older tetracycline.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Azithromycin (Zithromax) 🏆</td>
+                    <td>Macrolide antibiotic for respiratory, skin infections.</td>
+                    <td><ul><li>QT prolongation</li><li>Nausea</li><li>Diarrhea</li></ul></td>
+                    <td>Monitor ECG if at risk.</td>
+                    <td>Take as directed; report palpitations.</td>
+                    <td>May increase warfarin effect.</td>
+                </tr>
+                <tr>
+                    <td>Erythromycin</td>
+                    <td>Macrolide antibiotic – also used as GI prokinetic.</td>
+                    <td><ul><li>GI upset</li><li>QT prolongation</li></ul></td>
+                    <td>Same.</td>
+                    <td>Take with food; report palpitations.</td>
+                    <td>Strong CYP3A4 inhibitor (↑ many drugs).</td>
+                </tr>
+                <tr>
+                    <td>Ciprofloxacin (Cipro)</td>
+                    <td>Fluoroquinolone for UTI, GI, respiratory infections.</td>
+                    <td><ul><li>Tendon damage/rupture</li><li>QT prolongation</li><li>Sun sensitivity</li></ul></td>
+                    <td>Monitor for tendon pain; avoid in myasthenia gravis.</td>
+                    <td>Report tendon pain; avoid sun; take with plenty of water.</td>
+                    <td>↑ theophylline, warfarin; avoid dairy/antacids.</td>
+                </tr>
+                <tr>
+                    <td>Levofloxacin (Levaquin)</td>
+                    <td>Fluoroquinolone – similar to cipro.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Trimethoprim‑Sulfamethoxazole (Bactrim) 🏆</td>
+                    <td>Sulfa antibiotic for UTI, MRSA, PCP pneumonia.</td>
+                    <td><ul><li>Stevens‑Johnson rash</li><li>Crystals in urine</li><li>High potassium</li><li>Sun sensitivity</li></ul></td>
+                    <td>Monitor K+, Cr; avoid in sulfa allergy, G6PD deficiency.</td>
+                    <td>Drink plenty of water; use sunscreen; report rash.</td>
+                    <td>↑ warfarin, phenytoin, K+ with ACEi/ARBs.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Vancomycin (Vancocin) 🏆</td>
+                    <td>Used for MRSA, C. diff, serious gram‑positive infections.</td>
+                    <td><ul><li>"Red Man" syndrome (infusion rate)</li><li>Kidney damage</li><li>Hearing loss</li></ul></td>
+                    <td>Monitor trough levels (10‑20), Cr, hearing.</td>
+                    <td>Infuse over ≥60 min; report tinnitus, change in urine output.</td>
+                    <td>Avoid with other nephrotoxins (aminoglycosides).</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Metronidazole (Flagyl) 🏆</td>
+                    <td>Used for anaerobic infections, C. diff, trichomoniasis.</td>
+                    <td><ul><li>Metallic taste</li><li>Dark urine (harmless)</li><li>Nerve damage</li><li>Stevens‑Johnson</li></ul></td>
+                    <td>Monitor for neuropathy; avoid alcohol.</td>
+                    <td>No alcohol during and 3 days after; urine color harmless.</td>
+                    <td>Disulfiram‑like reaction with alcohol; ↑ warfarin.</td>
+                </tr>
+                <tr>
+                    <td>Gentamicin</td>
+                    <td>Aminoglycoside for serious gram‑negative infections.</td>
+                    <td><ul><li>Kidney damage</li><li>Hearing loss</li></ul></td>
+                    <td>Monitor peak/trough, Cr, hearing tests.</td>
+                    <td>Report hearing loss, dizziness, decreased urine.</td>
+                    <td>Avoid with other nephrotoxins/ototoxins.</td>
+                </tr>
+                <tr>
+                    <td>Tobramycin</td>
+                    <td>Same as gentamicin – aminoglycoside.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Amikacin</td>
+                    <td>Aminoglycoside – similar.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Clindamycin (Cleocin)</td>
+                    <td>Used for anaerobic and skin infections – high risk of C. diff.</td>
+                    <td><ul><li>C. diff colitis</li><li>Rash</li></ul></td>
+                    <td>Monitor for severe diarrhea.</td>
+                    <td>Report watery/bloody diarrhea.</td>
+                    <td>May potentiate neuromuscular blockers.</td>
+                </tr>
+                <tr>
+                    <td>Linezolid (Zyvox)</td>
+                    <td>Used for VRE, MRSA – has MAOI properties.</td>
+                    <td><ul><li>Low blood counts</li><li>Serotonin syndrome (with SSRIs)</li><li>Nerve damage</li></ul></td>
+                    <td>Monitor CBC; avoid tyramine foods, serotonergic drugs.</td>
+                    <td>Avoid aged foods, wine; report bleeding, fever.</td>
+                    <td>MAOI interactions; avoid SSRIs/SNRIs.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Rifampin (Rifadin) 🏆</td>
+                    <td>Antitubercular – also for meningococcal prophylaxis.</td>
+                    <td><ul><li>Orange‑red body fluids</li><li>Liver damage</li><li>Flu‑like symptoms</li></ul></td>
+                    <td>Monitor LFTs.</td>
+                    <td>Expect discoloration (urine, sweat, tears); use glasses (contact stain).</td>
+                    <td>Potent CYP inducer – decreases OCP, warfarin, many drugs.</td>
+                </tr>
+                <tr>
+                    <td>Isoniazid (INH)</td>
+                    <td>Antitubercular – requires B6 to prevent nerve damage.</td>
+                    <td><ul><li>Liver damage</li><li>Peripheral neuropathy</li><li>Rash</li></ul></td>
+                    <td>Monitor LFTs; give pyridoxine (B6).</td>
+                    <td>Avoid alcohol; report jaundice, anorexia, numbness/tingling.</td>
+                    <td>Avoid with other liver‑toxic drugs.</td>
+                </tr>
+                <tr>
+                    <td>Ethambutol (Myambutol)</td>
+                    <td>Antitubercular – can cause vision problems.</td>
+                    <td><ul><li>Optic neuritis (vision loss, color blindness)</li></ul></td>
+                    <td>Baseline and monthly eye exams.</td>
+                    <td>Report vision changes immediately.</td>
+                    <td>Avoid with other neurotoxins.</td>
+                </tr>
+                <tr>
+                    <td>Pyrazinamide</td>
+                    <td>Antitubercular – can cause gout and liver injury.</td>
+                    <td><ul><li>Liver damage</li><li>High uric acid (gout)</li></ul></td>
+                    <td>Monitor LFTs, uric acid.</td>
+                    <td>Report joint pain.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Rifapentine (Priftin)</td>
+                    <td>Antitubercular – similar to rifampin.</td>
+                    <td>Same as rifampin.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Acyclovir (Zovirax)</td>
+                    <td>Antiviral for herpes simplex, varicella‑zoster.</td>
+                    <td><ul><li>Kidney damage (IV)</li><li>Nausea</li></ul></td>
+                    <td>Monitor kidney function; ensure good hydration.</td>
+                    <td>Increase fluid intake.</td>
+                    <td>Avoid with other nephrotoxins.</td>
+                </tr>
+                <tr>
+                    <td>Ganciclovir (Cytovene)</td>
+                    <td>Antiviral for CMV – can cause low blood counts.</td>
+                    <td><ul><li>Low white cells, platelets</li></ul></td>
+                    <td>Monitor CBC; teratogenic.</td>
+                    <td>Use contraception; avoid handling crushed tablets.</td>
+                    <td>Avoid with other myelosuppressants.</td>
+                </tr>
+                <tr>
+                    <td>Oseltamivir (Tamiflu)</td>
+                    <td>Antiviral for influenza – start within 48h.</td>
+                    <td><ul><li>Nausea</li><li>Headache</li></ul></td>
+                    <td>Start early.</td>
+                    <td>May cause neuropsychiatric events (rare).</td>
+                    <td>No major.</td>
+                </tr>
+                <tr>
+                    <td>Nystatin (Mycostatin)</td>
+                    <td>Antifungal for oral, skin, vaginal candidiasis.</td>
+                    <td><ul><li>Mild GI upset</li><li>Taste change</li></ul></td>
+                    <td>None.</td>
+                    <td>Swish and swallow or swish and hold for oral thrush.</td>
+                    <td>No interactions.</td>
+                </tr>
+                <tr>
+                    <td>Fluconazole (Diflucan)</td>
+                    <td>Antifungal for systemic and topical fungal infections.</td>
+                    <td><ul><li>QT prolongation</li><li>Liver damage</li><li>Nausea</li></ul></td>
+                    <td>Monitor LFTs; avoid with QT‑prolonging drugs.</td>
+                    <td>Report palpitations, jaundice.</td>
+                    <td>↑ warfarin, phenytoin, sulfonylureas.</td>
+                </tr>
+                <tr>
+                    <td>Voriconazole (Vfend)</td>
+                    <td>Antifungal for aspergillosis – visual disturbances common.</td>
+                    <td><ul><li>Vision changes</li><li>Sun sensitivity</li><li>Liver damage</li></ul></td>
+                    <td>Monitor LFTs, vision tests.</td>
+                    <td>Report vision changes; avoid sun.</td>
+                    <td>Strong CYP interactions.</td>
+                </tr>
+                <tr>
+                    <td>Terbinafine (Lamisil)</td>
+                    <td>Antifungal for nail fungus and ringworm.</td>
+                    <td><ul><li>Headache</li><li>Diarrhea</li><li>Taste loss</li><li>Liver damage</li></ul></td>
+                    <td>Monitor LFTs.</td>
+                    <td>Report jaundice, dark urine.</td>
+                    <td>Few.</td>
+                </tr>
+                <tr>
+                    <td>Chloroquine/Hydroxychloroquine (Plaquenil)</td>
+                    <td>Antimalarial, used for lupus and RA.</td>
+                    <td><ul><li>Retinal damage (irreversible)</li><li>QT prolongation</li><li>Muscle weakness</li></ul></td>
+                    <td>Baseline and annual eye exams; monitor ECG.</td>
+                    <td>Report vision changes, muscle weakness.</td>
+                    <td>Avoid with QT‑prolonging drugs.</td>
+                </tr>
+
+                <!-- ********** IMMUNOLOGICAL ********** -->
+                <tr class="system-header"><td colspan="6">💉 IMMUNOLOGICAL</td></tr>
+                <tr>
+                    <td>Adalimumab (Humira)</td>
+                    <td>TNF blocker for RA, Crohn's, psoriasis – increases infection risk.</td>
+                    <td><ul><li>Serious infections (TB)</li><li>Injection site reactions</li></ul></td>
+                    <td>Screen for TB before start; monitor for infection.</td>
+                    <td>Report fever, cough, signs of infection.</td>
+                    <td>Avoid live vaccines.</td>
+                </tr>
+                <tr>
+                    <td>Etanercept (Enbrel)</td>
+                    <td>TNF blocker – similar to adalimumab.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Infliximab (Remicade)</td>
+                    <td>TNF blocker (IV) – same precautions.</td>
+                    <td><ul><li>Infusion reactions</li><li>Infection risk</li></ul></td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Tacrolimus (Prograf)</td>
+                    <td>Calcineurin inhibitor – prevents transplant rejection.</td>
+                    <td><ul><li>Kidney damage</li><li>Tremor, headache</li><li>High blood sugar</li><li>High BP</li></ul></td>
+                    <td>Monitor trough level, Cr, BP, glucose.</td>
+                    <td>Report tremor, headache, change in urine output.</td>
+                    <td>Avoid with nephrotoxins, CYP3A4 inhibitors.</td>
+                </tr>
+                <tr>
+                    <td>Cyclosporine (Sandimmune)</td>
+                    <td>Calcineurin inhibitor – transplant rejection, RA, psoriasis.</td>
+                    <td><ul><li>Kidney damage</li><li>High BP</li><li>Gum overgrowth</li><li>High potassium</li></ul></td>
+                    <td>Monitor level, Cr, BP, K+.</td>
+                    <td>Good oral hygiene; report bleeding gums.</td>
+                    <td>Same as tacrolimus.</td>
+                </tr>
+                <tr>
+                    <td>Azathioprine (Imuran)</td>
+                    <td>Immunosuppressant – transplant, autoimmune.</td>
+                    <td><ul><li>Low white cells, platelets</li><li>Liver damage</li></ul></td>
+                    <td>Monitor CBC, LFTs; TPMT testing before use.</td>
+                    <td>Report fever, bruising, jaundice.</td>
+                    <td>Avoid with allopurinol (↑ myelosuppression).</td>
+                </tr>
+                <tr>
+                    <td>Mycophenolate (CellCept)</td>
+                    <td>Immunosuppressant – transplant rejection.</td>
+                    <td><ul><li>Low white cells</li><li>GI bleeding</li><li>Teratogenic</li></ul></td>
+                    <td>Monitor CBC; pregnancy test before use.</td>
+                    <td>Use two forms of birth control; report bleeding.</td>
+                    <td>Avoid antacids (↓ absorption).</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Epinephrine (EpiPen) 🏆</td>
+                    <td>First‑line for severe allergic reactions (anaphylaxis).</td>
+                    <td><ul><li>Fast heart rate</li><li>Palpitations</li><li>High BP</li><li>Anxiety</li></ul></td>
+                    <td>Monitor BP, HR, ECG.</td>
+                    <td>Inject into outer thigh; call 911; may repeat 5‑15 min.</td>
+                    <td>Beta‑blockers block effect.</td>
+                </tr>
+                <tr>
+                    <td>Rh(D) Immune Globulin (RhoGAM)</td>
+                    <td>Prevents Rh‑negative mother from making antibodies against Rh+ baby.</td>
+                    <td><ul><li>Local reaction</li><li>Fever</li></ul></td>
+                    <td>Give to Rh‑negative mother after birth of Rh+ baby or at 28w.</td>
+                    <td>None.</td>
+                    <td>Do not give with live vaccines.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Influenza Vaccine 🏆</td>
+                    <td>Prevents influenza (flu).</td>
+                    <td><ul><li>Local soreness</li><li>Mild flu‑like symptoms</li></ul></td>
+                    <td>Live nasal vaccine contraindicated in immunocompromised, pregnancy.</td>
+                    <td>Annual vaccination recommended.</td>
+                    <td>None significant.</td>
+                </tr>
+
+                <!-- ********** INTEGUMENTARY / SENSORY ********** -->
+                <tr class="system-header"><td colspan="6">👁️ INTEGUMENTARY / SENSORY</td></tr>
+                <tr class="high-yield">
+                    <td>Isotretinoin (Accutane) 🏆</td>
+                    <td>Used for severe cystic acne.</td>
+                    <td><ul><li>Severe birth defects</li><li>Depression/suicide risk</li><li>Dry skin/lips</li><li>Increased pressure in skull</li></ul></td>
+                    <td>Pregnancy test before, during, after; monitor LFTs, lipids, mood.</td>
+                    <td>Use two forms of birth control; report mood changes, headache, vision changes.</td>
+                    <td>Avoid vitamin A supplements.</td>
+                </tr>
+                <tr>
+                    <td>Permethrin (Nix)</td>
+                    <td>Used for scabies and lice (topical).</td>
+                    <td><ul><li>Local itching/burning</li></ul></td>
+                    <td>None.</td>
+                    <td>Apply to all skin from neck down for scabies; wash off after 8‑14h.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Capsaicin (Zostrix)</td>
+                    <td>Used for arthritis and nerve pain (topical).</td>
+                    <td><ul><li>Burning/stinging initially</li></ul></td>
+                    <td>Wash hands after application.</td>
+                    <td>Do not use with heat; transient burning normal.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Pilocarpine (ophthalmic)</td>
+                    <td>Used for glaucoma (constricts pupil, increases drainage).</td>
+                    <td><ul><li>Blurred vision</li><li>Eye ache</li><li>Small pupil</li></ul></td>
+                    <td>Contraindicated in acute iritis.</td>
+                    <td>May cause difficulty with night vision.</td>
+                    <td>None significant.</td>
+                </tr>
+                <tr>
+                    <td>Timolol (ophthalmic)</td>
+                    <td>Beta‑blocker eye drops for glaucoma.</td>
+                    <td><ul><li>Can be absorbed – slow heart rate, wheezing</li></ul></td>
+                    <td>Monitor HR, lung sounds.</td>
+                    <td>Report slow pulse, shortness of breath.</td>
+                    <td>Additive with oral beta‑blockers.</td>
+                </tr>
+                <tr>
+                    <td>Botulinum Toxin Type A (Botox)</td>
+                    <td>Used for muscle spasms, wrinkles, migraines.</td>
+                    <td><ul><li>Difficulty swallowing</li><li>Breathing problems (rare)</li></ul></td>
+                    <td>Monitor for dysphagia, respiratory distress.</td>
+                    <td>Report difficulty swallowing, shortness of breath.</td>
+                    <td>Avoid with aminoglycosides (↑ weakness).</td>
+                </tr>
+                <tr>
+                    <td>Lidocaine (Xylocaine)</td>
+                    <td>Local anesthetic; also used for arrhythmias (IV).</td>
+                    <td><ul><li>Numbness around mouth</li><li>Seizures (toxicity)</li><li>Heart arrhythmias</li></ul></td>
+                    <td>Monitor ECG, level (1‑5 mcg/mL).</td>
+                    <td>Report lightheadedness, twitching.</td>
+                    <td>Antidote: lipid emulsion.</td>
+                </tr>
+                <tr>
+                    <td>Lidocaine patch (Lidoderm)</td>
+                    <td>Used for post‑herpetic neuralgia (nerve pain).</td>
+                    <td><ul><li>Local irritation</li></ul></td>
+                    <td>Apply to intact skin only.</td>
+                    <td>Do not apply heat; remove after 12h.</td>
+                    <td>None.</td>
+                </tr>
+
+                <!-- ********** ANALGESICS ********** -->
+                <tr class="system-header"><td colspan="6">💊 ANALGESICS / PAIN</td></tr>
+                <tr class="high-yield">
+                    <td>Morphine 🏆</td>
+                    <td>Opioid for moderate‑severe pain.</td>
+                    <td><ul><li>Slow breathing</li><li>Constipation</li><li>Drowsiness</li><li>Itching</li></ul></td>
+                    <td>Monitor RR, O2, pain, bowel function.</td>
+                    <td>Take with food; increase fluids/fiber; avoid driving.</td>
+                    <td>Antidote: naloxone. Avoid with other CNS depressants.</td>
+                </tr>
+                <tr>
+                    <td>Hydromorphone (Dilaudid)</td>
+                    <td>Opioid analgesic – potent, similar to morphine.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Oxycodone (Percocet)</td>
+                    <td>Opioid analgesic – often with acetaminophen.</td>
+                    <td>Same + acetaminophen toxicity.</td>
+                    <td>Monitor for acetaminophen limit.</td>
+                    <td>Do not crush ER; avoid alcohol.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Hydrocodone (Vicodin)</td>
+                    <td>Opioid analgesic – similar.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Fentanyl (Duragesic) 🏆</td>
+                    <td>Potent opioid – patch for chronic pain, IV for anesthesia.</td>
+                    <td><ul><li>Slow breathing</li><li>Muscle rigidity (IV)</li><li>Skin irritation</li></ul></td>
+                    <td>Contraindicated in opioid‑naive, acute pain. Monitor RR.</td>
+                    <td>Do not heat patch; dispose properly.</td>
+                    <td>Antidote: naloxone.</td>
+                </tr>
+                <tr>
+                    <td>Methadone (Dolophine)</td>
+                    <td>Used for pain and opioid addiction – long half‑life.</td>
+                    <td><ul><li>QT prolongation</li><li>Slow breathing</li></ul></td>
+                    <td>Monitor ECG, RR; long half‑life.</td>
+                    <td>Do not take extra doses; report palpitations.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Tramadol (Ultram)</td>
+                    <td>Used for moderate pain – lowers seizure threshold.</td>
+                    <td><ul><li>Seizures</li><li>Serotonin syndrome</li><li>Nausea</li></ul></td>
+                    <td>Contraindicated with MAOIs, SSRIs; monitor seizure risk.</td>
+                    <td>Avoid alcohol; report agitation, hyperthermia.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Naloxone (Narcan)</td>
+                    <td>Reverses opioid overdose.</td>
+                    <td><ul><li>Precipitates withdrawal</li><li>Fast heart rate</li></ul></td>
+                    <td>Monitor RR, withdrawal symptoms.</td>
+                    <td>Family education for overdose.</td>
+                    <td>Reverses opioids (short duration).</td>
+                </tr>
+                <tr>
+                    <td>Nalbuphine (Nubain)</td>
+                    <td>Opioid agonist‑antagonist for labor pain.</td>
+                    <td><ul><li>Can cause withdrawal in opioid‑dependent</li></ul></td>
+                    <td>Monitor pain, sedation.</td>
+                    <td>N/A.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Ibuprofen (Advil) 🏆</td>
+                    <td>NSAID for pain, inflammation, fever.</td>
+                    <td><ul><li>GI bleeding</li><li>Kidney damage</li><li>Heart attack/stroke risk</li></ul></td>
+                    <td>Monitor Cr, signs of bleeding; avoid in third trimester.</td>
+                    <td>Take with food; report black stools, stomach pain.</td>
+                    <td>Avoid with aspirin, anticoagulants.</td>
+                </tr>
+                <tr>
+                    <td>Naproxen (Aleve)</td>
+                    <td>NSAID – longer‑acting.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Celecoxib (Celebrex)</td>
+                    <td>COX‑2 inhibitor – less GI bleeding, still CV risk.</td>
+                    <td><ul><li>CV risk</li><li>Sulfa allergy contraindication</li></ul></td>
+                    <td>Sulfa allergy contraindication.</td>
+                    <td>Take with food; report chest pain.</td>
+                    <td>Avoid with other NSAIDs.</td>
+                </tr>
+                <tr>
+                    <td>Ketorolac (Toradol)</td>
+                    <td>IV/IM NSAID for short‑term acute pain (≤5 days).</td>
+                    <td><ul><li>GI bleed</li><li>Kidney toxicity</li></ul></td>
+                    <td>Use ≤5 days; monitor Cr, CBC.</td>
+                    <td>Short‑term use only; report bleeding.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Acetaminophen (Tylenol) 🏆</td>
+                    <td>Pain and fever reliever – no anti‑inflammatory effect.</td>
+                    <td><ul><li>Liver damage (overdose)</li></ul></td>
+                    <td>Monitor LFTs; max dose 3‑4 g/day.</td>
+                    <td>Avoid alcohol; do not exceed daily limit.</td>
+                    <td>Antidote: acetylcysteine.</td>
+                </tr>
+                <tr class="high-yield">
+                    <td>Allopurinol (Zyloprim) 🏆</td>
+                    <td>Used to prevent gout attacks (lowers uric acid).</td>
+                    <td><ul><li>Rash (can be severe Stevens‑Johnson)</li><li>Stomach upset</li></ul></td>
+                    <td>Monitor for rash; contraindicated in acute gout attack.</td>
+                    <td>Take with plenty of water; report rash immediately.</td>
+                    <td>↑ azathioprine/mercaptopurine levels.</td>
+                </tr>
+                <tr>
+                    <td>Colchicine (Colcrys)</td>
+                    <td>Used for acute gout flares.</td>
+                    <td><ul><li>Severe diarrhea, nausea</li><li>Low blood counts</li></ul></td>
+                    <td>Monitor CBC, Cr; avoid with kidney/liver impairment.</td>
+                    <td>Report severe diarrhea, muscle pain.</td>
+                    <td>Avoid with P‑gp or CYP3A4 inhibitors (↑ toxicity).</td>
+                </tr>
+                <tr>
+                    <td>Probenecid</td>
+                    <td>Used for chronic gout (increases uric acid excretion).</td>
+                    <td><ul><li>Rash</li><li>Stomach upset</li><li>Kidney stones</li></ul></td>
+                    <td>Monitor uric acid, urine pH; avoid with uric acid stones.</td>
+                    <td>Increase fluid intake.</td>
+                    <td>↑ levels of penicillins, NSAIDs.</td>
+                </tr>
+
+                <!-- ********** REPRODUCTIVE / OBSTETRICS ********** -->
+                <tr class="system-header"><td colspan="6">🤰 REPRODUCTIVE / OBSTETRICS</td></tr>
+                <tr class="high-yield">
+                    <td>Combined Oral Contraceptives 🏆</td>
+                    <td>Used to prevent pregnancy.</td>
+                    <td><ul><li>Blood clots</li><li>High BP</li><li>Nausea</li><li>Breakthrough bleeding</li></ul></td>
+                    <td>Monitor BP; contraindicated in smokers >35, migraine with aura, hx DVT.</td>
+                    <td>Report leg pain, chest pain, severe headache; use backup if missed.</td>
+                    <td>Rifampin, certain antibiotics reduce efficacy.</td>
+                </tr>
+                <tr>
+                    <td>Etonogestrel/Ethinyl Estradiol Ring (NuvaRing)</td>
+                    <td>Vaginal ring for contraception – same as COCs.</td>
+                    <td>Same as COCs.</td>
+                    <td>Same.</td>
+                    <td>Keep in 3 weeks, remove 1 week; backup 7 days first cycle.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Etonogestrel Implant (Nexplanon)</td>
+                    <td>Contraceptive implant – lasts 3 years.</td>
+                    <td><ul><li>Irregular bleeding</li><li>Headache</li><li>Weight gain</li></ul></td>
+                    <td>Monitor arm implant site.</td>
+                    <td>Replace every 3 years.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Levonorgestrel IUD (Mirena)</td>
+                    <td>Hormonal IUD – contraception, heavy periods.</td>
+                    <td><ul><li>Irregular spotting</li><li>Pelvic infection (rare)</li></ul></td>
+                    <td>Check strings monthly.</td>
+                    <td>Report fever, abnormal discharge, severe pain.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Copper IUD (ParaGard)</td>
+                    <td>Non‑hormonal IUD – emergency and long‑term contraception.</td>
+                    <td><ul><li>Heavier periods</li><li>Cramping</li></ul></td>
+                    <td>Check strings monthly; no hormones.</td>
+                    <td>Same.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Terbutaline (Brethine)</td>
+                    <td>Used to stop preterm labor (tocolytic).</td>
+                    <td><ul><li>Fast heart rate (mom and baby)</li><li>High blood sugar</li><li>Fluid in lungs</li></ul></td>
+                    <td>Monitor HR, glucose, breath sounds.</td>
+                    <td>Short‑term use.</td>
+                    <td>Avoid with other beta‑agonists.</td>
+                </tr>
+                <tr>
+                    <td>Magnesium sulfate</td>
+                    <td>Used for preterm labor and preventing seizures in preeclampsia.</td>
+                    <td><ul><li>Flushing</li><li>Loss of reflexes</li><li>Slow breathing (toxicity)</li></ul></td>
+                    <td>Monitor reflexes, RR, urine output, Mg level. Antidote: calcium gluconate.</td>
+                    <td>N/A (inpatient).</td>
+                    <td>Avoid with CNS depressants.</td>
+                </tr>
+                <tr>
+                    <td>Oxytocin (Pitocin)</td>
+                    <td>Used to induce or strengthen labor contractions.</td>
+                    <td><ul><li>Too strong contractions (hyperstimulation)</li><li>Water intoxication (high dose)</li></ul></td>
+                    <td>Monitor contractions, fetal heart rate, I&O.</td>
+                    <td>N/A.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Methylergonovine (Methergine)</td>
+                    <td>Used to prevent/treat postpartum hemorrhage.</td>
+                    <td><ul><li>High BP</li><li>Nausea</li></ul></td>
+                    <td>Monitor BP; contraindicated in preeclampsia/high BP.</td>
+                    <td>Report severe headache, chest pain.</td>
+                    <td>Avoid with strong CYP3A4 inhibitors.</td>
+                </tr>
+                <tr>
+                    <td>Carboprost (Hemabate)</td>
+                    <td>Used for postpartum hemorrhage (prostaglandin).</td>
+                    <td><ul><li>Wheezing (can trigger asthma)</li><li>Vomiting/diarrhea</li><li>Fever</li></ul></td>
+                    <td>Avoid in asthma, active cardiac disease.</td>
+                    <td>N/A.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Meperidine (Demerol)</td>
+                    <td>Opioid used in labor – not first‑line.</td>
+                    <td><ul><li>Seizures (normeperidine)</li><li>Slow breathing</li></ul></td>
+                    <td>Monitor for seizures; avoid in kidney disease.</td>
+                    <td>Not first‑line.</td>
+                    <td>Avoid with MAOIs (fatal).</td>
+                </tr>
+                <tr>
+                    <td>Butorphanol (Stadol)</td>
+                    <td>Opioid agonist‑antagonist for labor pain.</td>
+                    <td><ul><li>Drowsiness</li><li>Nausea</li></ul></td>
+                    <td>Monitor for withdrawal in opioid‑dependent.</td>
+                    <td>N/A.</td>
+                    <td>Same.</td>
+                </tr>
+
+                <!-- ********** HERBAL & COMPLEMENTARY ********** -->
+                <tr class="system-header"><td colspan="6">🌿 HERBAL & COMPLEMENTARY</td></tr>
+                <tr>
+                    <td>St. John's Wort</td>
+                    <td>Used for mild depression – can interact with many drugs.</td>
+                    <td><ul><li>Serotonin syndrome (with SSRIs)</li><li>Sun sensitivity</li></ul></td>
+                    <td>Monitor for agitation, confusion.</td>
+                    <td>Report signs of serotonin excess; avoid sun.</td>
+                    <td>Induces liver enzymes – decreases OCP, warfarin, antivirals.</td>
+                </tr>
+                <tr>
+                    <td>Ginkgo biloba</td>
+                    <td>Used for memory – may increase bleeding.</td>
+                    <td><ul><li>Bleeding risk</li></ul></td>
+                    <td>Monitor for bruising.</td>
+                    <td>Stop before surgery.</td>
+                    <td>Avoid with anticoagulants/antiplatelets.</td>
+                </tr>
+                <tr>
+                    <td>Garlic</td>
+                    <td>Used for heart health – may increase bleeding.</td>
+                    <td><ul><li>Bleeding risk</li></ul></td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Ginger</td>
+                    <td>Used for nausea – may increase bleeding risk.</td>
+                    <td><ul><li>Bleeding risk</li><li>Heartburn</li></ul></td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Ginseng</td>
+                    <td>Used for energy – can lower blood sugar, increase bleeding.</td>
+                    <td><ul><li>Bleeding risk</li><li>Low blood sugar</li></ul></td>
+                    <td>Monitor glucose, INR.</td>
+                    <td>Report signs of bleeding/low blood sugar.</td>
+                    <td>Same.</td>
+                </tr>
+                <tr>
+                    <td>Saw palmetto</td>
+                    <td>Used for BPH – mild GI upset.</td>
+                    <td><ul><li>Mild stomach upset</li></ul></td>
+                    <td>None.</td>
+                    <td>May interfere with PSA test.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Kava</td>
+                    <td>Used for anxiety – can cause severe liver injury.</td>
+                    <td><ul><li>Liver damage</li></ul></td>
+                    <td>Monitor LFTs.</td>
+                    <td>Report jaundice, fatigue.</td>
+                    <td>Avoid with alcohol, sedatives.</td>
+                </tr>
+                <tr>
+                    <td>Valerian root</td>
+                    <td>Used for insomnia – may increase sedation.</td>
+                    <td><ul><li>Drowsiness</li><li>Headache</li></ul></td>
+                    <td>None.</td>
+                    <td>Avoid with CNS depressants.</td>
+                    <td>Potentiates benzodiazepines, alcohol.</td>
+                </tr>
+                <tr>
+                    <td>Licorice</td>
+                    <td>Used for ulcers, cough – can cause low potassium, high BP.</td>
+                    <td><ul><li>Low potassium</li><li>High BP</li><li>Swelling</li></ul></td>
+                    <td>Monitor K+, BP.</td>
+                    <td>Report weakness, palpitations.</td>
+                    <td>Avoid with diuretics, digoxin.</td>
+                </tr>
+                <tr>
+                    <td>Melatonin</td>
+                    <td>Used for jet lag, sleep – mild sedation.</td>
+                    <td><ul><li>Daytime drowsiness</li><li>Headache</li></ul></td>
+                    <td>None.</td>
+                    <td>Take 30‑60 min before bedtime.</td>
+                    <td>May increase sedative effect.</td>
+                </tr>
+                <tr>
+                    <td>Black cohosh</td>
+                    <td>Used for menopausal symptoms – can cause liver damage.</td>
+                    <td><ul><li>Liver damage</li></ul></td>
+                    <td>Monitor LFTs.</td>
+                    <td>Report jaundice, dark urine.</td>
+                    <td>None.</td>
+                </tr>
+                <tr>
+                    <td>Echinacea</td>
+                    <td>Used to prevent colds – may cause allergic reactions.</td>
+                    <td><ul><li>Allergic reactions</li><li>Autoimmune flares</li></ul></td>
+                    <td>Avoid in autoimmune disorders.</td>
+                    <td>May reduce effectiveness of immunosuppressants.</td>
+                    <td>None.</td>
+                </tr>
+                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><strong>created by-<a href="https://www.instagram.com/jagmohan.1313/" class="icon brands fa-instagram"><span class="label">Jagmohan Singh</span></a></strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
